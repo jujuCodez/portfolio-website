@@ -1,0 +1,228 @@
+:root {
+    --background-color: #121212;
+    --text-color: #e1e1e1;
+    --highlight-color: rgba(255, 255, 255, 0.1); /* Highlight background color */
+    --accent-color: #ff748b; /* Accent color for cool text effects */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(50%); /* Adjust the brightness to make text readable */
+}
+
+.navbar {
+    border-radius: 15px; /* Rounded corners for the navbar */
+    margin-top: 10px;
+    margin-right: 10px;
+    right: 0;
+    top: 0;
+    position: fixed;
+    background-color: #333; /* Slightly transparent background */
+}
+
+.top-right-nav {
+    position: fixed;
+    top: 10px; /* gap from the top */
+    right: 10px; /* gap from the right */
+    border-radius: 15px;
+    padding: 0.5rem 1rem; /* Padding around content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for floating effect */
+    animation: float 3s ease-in-out infinite; /* Floating animation */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.navbar-nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
+    padding: 10px 15px; /* Padding for better spacing */
+    color: var(--text-color);
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 100%;
+    background: var(--highlight-color);
+    border-radius: 10px;
+    z-index: -1; /* Place it behind the text */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link:hover::before,
+.nav-link:focus::before {
+    width: 100%;
+    left: 50%;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--text-color); /* Change link color on hover */
+}
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    padding: 50px 0;
+    background-color: transparent;
+}
+
+footer {
+    background-color: #222;
+}
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    padding: 20px;
+    background-color: rgba(41, 30, 30, 0.5); /* Transparent background */
+}
+
+.profile-image {
+    max-width: 50%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.profile-bg {
+    max-width: 50%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.profile-section .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.profile-section .StuffIDo {
+    max-width: 50%;
+}
+
+.profile-section .AboutMe {
+    max-width: 50%;
+    text-align: right; /* Align text to the right */
+    margin-left: auto; /* Move the text to the right */
+}
+
+.profile-section h2 {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.profile-section p,
+.profile-section ul {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.profile-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-section ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.profile-section ul li::before {
+    content: '★';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+#section1 .profile-image {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    height: auto;
+    border-radius: 15px;
+}
+
+#tokyo-bg {
+    position: fixed; /* or absolute, depending on the layout context */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container without losing aspect ratio */
+    z-index: -1; /* Send the image to the back */
+    filter: blur(8px); /* Apply blur effect */
+}
+
+#tokyo-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure it's above the image but below everything else */
+}
