@@ -50,4 +50,5 @@ document.addEventListener("DOMContentLoaded", function() {
         highlight.style.width = '0';
         highlight.style.left = '0';
     });
+    
 });

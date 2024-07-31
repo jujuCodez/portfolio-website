@@ -21,28 +21,28 @@ html, body {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    filter: brightness(50%); /* Adjust the brightness to make text readable */
+    filter: brightness(50%);
 }
 
 .navbar {
-    border-radius: 15px; /* Rounded corners for the navbar */
+    border-radius: 15px;
     margin-top: 10px;
     margin-right: 10px;
     right: 0;
     top: 0;
     position: fixed;
-    background-color: #333; /* Slightly transparent background */
+    background-color: #333;
 }
 
 .top-right-nav {
     position: fixed;
-    top: 10px; /* gap from the top */
-    right: 10px; /* gap from the right */
+    top: 10px;
+    right: 10px;
     border-radius: 15px;
-    padding: 0.5rem 1rem; /* Padding around content */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for floating effect */
-    animation: float 3s ease-in-out infinite; /* Floating animation */
-    z-index: 1000; /* Ensure it's above other content */
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    animation: float 3s ease-in-out infinite;
+    z-index: 1000;
 }
 
 @keyframes float {
@@ -64,7 +64,7 @@ html, body {
     position: relative;
     display: inline-block;
     transition: color 0.3s ease;
-    padding: 10px 15px; /* Padding for better spacing */
+    padding: 10px 15px;
     color: var(--text-color);
 }
 
@@ -78,7 +78,7 @@ html, body {
     height: 100%;
     background: var(--highlight-color);
     border-radius: 10px;
-    z-index: -1; /* Place it behind the text */
+    z-index: -1;
     transition: width 0.3s ease, left 0.3s ease;
 }
 
@@ -90,7 +90,7 @@ html, body {
 
 .nav-link:hover,
 .nav-link:focus {
-    color: var(--text-color); /* Change link color on hover */
+    color: var(--text-color);
 }
 
 .hero-section {
@@ -116,6 +116,12 @@ html, body {
 
 footer {
     background-color: #222;
+    padding: 5px 0; /* Reduced padding to shift text upwards */
+    text-align: center;
+    border-top: 2px solid var(--accent-color); /* Add a border at the top */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+    background: linear-gradient(90deg, #222, #333); /* Add a subtle gradient */
+    color: var(--text-color); /* Ensure the text color is consistent */
 }
 
 .fixed-footer {
@@ -123,6 +129,11 @@ footer {
     bottom: 0;
     width: 100%;
     z-index: 1000;
+    height: 40px; /* Set a fixed height for a thinner footer */
+    line-height: 30px; /* Reduced line height to align text higher */
+    font-size: 0.9rem;
+    text-transform: uppercase; /* Make the text uppercase for a sleek look */
+    letter-spacing: 1px; /* Add some spacing between letters */
 }
 
 .profile-section {
@@ -131,7 +142,7 @@ footer {
     justify-content: space-around;
     height: 100vh;
     padding: 20px;
-    background-color: rgba(41, 30, 30, 0.5); /* Transparent background */
+    background-color: rgba(41, 30, 30, 0.5);
 }
 
 .profile-image {
@@ -160,8 +171,8 @@ footer {
 
 .profile-section .AboutMe {
     max-width: 50%;
-    text-align: right; /* Align text to the right */
-    margin-left: auto; /* Move the text to the right */
+    text-align: right;
+    margin-left: auto;
 }
 
 .profile-section h2 {
@@ -207,14 +218,14 @@ footer {
 }
 
 #tokyo-bg {
-    position: fixed; /* or absolute, depending on the layout context */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the container without losing aspect ratio */
-    z-index: -1; /* Send the image to the back */
-    filter: blur(8px); /* Apply blur effect */
+    object-fit: cover;
+    z-index: -1;
+    filter: blur(8px);
 }
 
 #tokyo-bg::after {
@@ -224,5 +235,26 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Ensure it's above the image but below everything else */
+    z-index: -1;
+}
+
+#scroll-indicator {
+    position: absolute;
+    bottom: 70px; /* Adjust this value to move the indicator higher or lower */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: var(--accent-color);
+    animation: bounce 1.5s infinite;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 0.3s ease; /* Smooth fade-out effect */
+}
+@keyframes bounce {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, 10px);
+    }
 }

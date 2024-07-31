@@ -3,19 +3,20 @@
 REM Navigate to the project directory
 cd /d %~dp0
 
-REM Launch the Python server
-echo Starting Python server...
-start python -m http.server
+REM Launch the Python server in a minimized window
+start /min python -m http.server
+
+REM Pause to allow Python server to start
+timeout /t 2 /nobreak >nul
+
+REM Open the index.html file via the Python server's localhost URL
+start http://localhost:8000/index.html
 
 REM Navigate to the React directory
 cd article5
 
-REM Launch the npm server
-echo Starting npm server...
-start npm start
+REM Launch the React server in a minimized window without opening the browser
+start /min cmd /c "npm run start -- --no-open"
 
-REM Open the index.html file in the default browser
-cd ..
-start index.html
-
-pause
+REM Close the main command prompt window
+exit
