@@ -250,6 +250,7 @@ footer {
     opacity: 1;
     transition: opacity 0.3s ease; /* Smooth fade-out effect */
 }
+
 @keyframes bounce {
     0%, 100% {
         transform: translate(-50%, 0);
@@ -257,4 +258,128 @@ footer {
     50% {
         transform: translate(-50%, 10px);
     }
+}
+
+/* Middle Navbar Styling */
+.middle-navbar {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top: 0; /* Aligns the navbar to the top */
+    left: 0; /* Aligns the navbar to the left */
+    transform: translate(0, 0); /* Remove previous centering transformation */
+    z-index: 1000; /* Ensure it stays above other elements */
+    width: 50%;
+}
+
+.middle-navbar .nav-link {
+    color: #ffffff;
+    padding: 10px 15px;
+}
+
+.middle-navbar .nav-link:hover {
+    color: #ffd700;
+}
+
+.middle-navbar .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+.middle-navbar .navbar-collapse {
+    justify-content: start; /* Aligns the navigation items to the left */
+}
+/* Slider Styling */
+.small-slider-container {
+    width: 600px; /* Adjust this value to make the container smaller */
+    margin: 50px auto 0 auto; /* Add margin at the top to move it down */
+}
+.slider-for, .slider-nav {
+    margin-bottom: 20px;
+}
+
+.slider-nav img {
+    width: 70%;
+    border-radius: 10px;
+    display: block; /* Ensure the image is treated as a block-level element */
+    margin: 0 auto; /* Center the image horizontally */
+}
+.slider-for img {
+    max-width: 450px;
+    border-radius: 10px;
+    display: block; /* Ensure the image is treated as a block-level element */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.slider-nav .slick-slide {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.slider-nav .slick-current {
+    opacity: 1;
+}
+
+/* Slider Arrows Styling */
+.slick-prev, .slick-next {
+    font-size: 0; /* Hide default arrow text */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slick-prev:hover, .slick-next:hover {
+    background-color: var(--highlight-color);
+}
+
+.slick-prev {
+    left: 10px;
+}
+
+.slick-next {
+    right: 10px;
+}
+
+/* Custom Arrow Icons */
+.slick-prev::before, .slick-next::before {
+    content: '';
+    display: inline-block;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    padding: 5px;
+    transform: rotate(45deg);
+    color: var(--text-color);
+}
+
+.slick-prev::before {
+    transform: rotate(135deg);
+}
+
+.slick-next::before {
+    transform: rotate(-45deg);
+}
+
+/* Custom style for the slideshow toggle button in the middle navbar */
+#slideshowToggleBtn {
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text color */
+    border: 2px solid #ffffff; /* White border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px 15px; /* Padding for the button */
+    margin-left: auto; /* Align it to the right in the navbar */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+#slideshowToggleBtn:hover {
+    background-color: #000000; /* Black background on hover */
+    color: #ffffff; /* White text color on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
 }
