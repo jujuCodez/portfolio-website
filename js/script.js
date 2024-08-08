@@ -59,10 +59,17 @@ function toggleSlideshow() {
     const toggleBtn = document.getElementById('slideshowToggleBtn');
 
     if (isSlideshowOn) {
-        $('.slider-for').slick('slickPause');
+        // Stop the autoplay
+        $('.slider-for').slick('slickSetOption', 'autoplay', false, true);
+        $('.slider-nav').slick('slickSetOption', 'autoplay', false, true);
         toggleBtn.textContent = 'Slideshow Off';
     } else {
-        $('.slider-for').slick('slickPlay');
+        // Start the autoplay with a specified speed (e.g., 1000ms)
+        const autoplaySpeed = 1000; // 1000ms = 1 second
+        $('.slider-for').slick('slickSetOption', 'autoplaySpeed', autoplaySpeed, true);
+        $('.slider-for').slick('slickSetOption', 'autoplay', true, true);
+        $('.slider-nav').slick('slickSetOption', 'autoplaySpeed', autoplaySpeed, true);
+        $('.slider-nav').slick('slickSetOption', 'autoplay', true, true);
         toggleBtn.textContent = 'Slideshow On';
     }
 
@@ -75,7 +82,8 @@ function initializeSliders() {
         slidesToScroll: 1,
         arrows: false,
         fade: true,
-        asNavFor: '.slider-nav'
+        asNavFor: '.slider-nav',
+        autoplay: false, // Autoplay off at the start
     });
 
     $('.slider-nav').slick({
@@ -84,7 +92,8 @@ function initializeSliders() {
         asNavFor: '.slider-for',
         dots: false,
         centerMode: true,
-        focusOnSelect: true
+        focusOnSelect: true,
+        autoplay: false, // Autoplay off at the start
     });
 
     $('a[data-slide]').click(function(e) {
@@ -97,6 +106,11 @@ function initializeSliders() {
 function showContent(item) {
     const photoAlbumContent = document.getElementById('photo-album-content');
     let albumContent;
+
+    // Turn off the slideshow when switching albums
+    if (isSlideshowOn) {
+        toggleSlideshow();
+    }
 
     switch(item) {
         case 'liella':
@@ -155,41 +169,37 @@ function showContent(item) {
                         <div><img src="images/photoalbum/7.jpg"></div>
                         <div><img src="images/photoalbum/8.jpg"></div>
                         <div><img src="images/photoalbum/9.jpg"></div>
-                        <div><img src="images/photoalbum/10.jpg"></div>
-                    </div>`;
+                        <div><img src="images/photoalbum/10.jpg"></div>`;
             break;
-        case 'item3':
+        case 'art':
             albumContent = `
                 <div class="album-content">
-                    <h2>キミノタメボクノタメ (KIMINOTAMEBOKUNOTAME)</h2>
-                    <p>Photos from Album KIMINOTAMEBOKUNOTAME.</p>
-                    <div class="photo-album slider-for">
-                        <div><img src="images/kimi1.jpg" alt="Kimi 1"></div>
-                        <div><img src="images/kimi2.jpg" alt="Kimi 2"></div>
-                        <div><img src="images/kimi3.jpg" alt="Kimi 3"></div>
-                    </div>
-                    <div class="photo-nav slider-nav mt-3">
-                        <div><img src="images/kimi1.jpg" alt="Kimi 1"></div>
-                        <div><img src="images/kimi2.jpg" alt="Kimi 2"></div>
-                        <div><img src="images/kimi3.jpg" alt="Kimi 3"></div>
-                    </div>
-                </div>`;
-            break;
-        case 'item4':
-            albumContent = `
-                <div class="album-content">
-                    <h2>JQuery Image Carousel</h2>
-                    <p>Photos from Album JQuery Image Carousel.</p>
-                    <div class="photo-album slider-for">
-                        <div><img src="images/jquery1.jpg" alt="Carousel 1"></div>
-                        <div><img src="images/jquery2.jpg" alt="Carousel 2"></div>
-                        <div><img src="images/jquery3.jpg" alt="Carousel 3"></div>
-                    </div>
-                    <div class="photo-nav slider-nav mt-3">
-                        <div><img src="images/jquery1.jpg" alt="Carousel 1"></div>
-                        <div><img src="images/jquery2.jpg" alt="Carousel 2"></div>
-                        <div><img src="images/jquery3.jpg" alt="Carousel 3"></div>
-                    </div>
+                    <h2>juju's Artworks</h2>
+                    <p>Photos of works from juju</p>
+                        <div class="photo-album slider-for">
+                            <div><img src="images/photoalbum/works/1.jpg"></div>
+                            <div><img src="images/photoalbum/works/2.jpg"></div>
+                            <div><img src="images/photoalbum/works/3.jpg"></div>
+                            <div><img src="images/photoalbum/works/4.jpg"></div>
+                            <div><img src="images/photoalbum/works/5.jpg"></div>
+                            <div><img src="images/photoalbum/works/6.jpg"></div>
+                            <div><img src="images/photoalbum/works/7.jpg"></div>
+                            <div><img src="images/photoalbum/works/8.jpg"></div>
+                            <div><img src="images/photoalbum/works/9.jpg"></div>
+                            <div><img src="images/photoalbum/works/10.jpg"></div>
+                        </div>
+                        <div class="slider slider-nav">
+                            <div><img src="images/photoalbum/works/1.jpg"></div>
+                            <div><img src="images/photoalbum/works/2.jpg"></div>
+                            <div><img src="images/photoalbum/works/3.jpg"></div>
+                            <div><img src="images/photoalbum/works/4.jpg"></div>
+                            <div><img src="images/photoalbum/works/5.jpg"></div>
+                            <div><img src="images/photoalbum/works/6.jpg"></div>
+                            <div><img src="images/photoalbum/works/7.jpg"></div>
+                            <div><img src="images/photoalbum/works/8.jpg"></div>
+                            <div><img src="images/photoalbum/works/9.jpg"></div>
+                            <div><img src="images/photoalbum/works/10.jpg"></div>
+                        </div>
                 </div>`;
             break;
         default:

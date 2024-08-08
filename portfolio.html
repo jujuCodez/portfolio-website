@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juju's Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+    :root {
+    --background-color: #121212;
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: white;
+            text-align: center;
+            animation: bounce 2s infinite;
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translate(-50%, 0);
+            }
+            50% {
+                transform: translate(-50%, 10px);
+            }
+        }
+
+        .hero-section {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            z-index: 1;
+        }
+
+        .next-section {
+            margin-top: -40px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .skill-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .skill-item p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation (Bootstrap Navbar) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark top-right-nav">
+    <div class="container-fluid position-relative">
+        <a class="navbar-brand" href="#">Juju's Consortium of Stuff</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="photoalbum.html">Photo Album</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="portfolio.html">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="protectedBase.html">Login Admin</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Articles
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="http://localhost:3000/article1">Article 1</a></li>
+                        <li><a class="dropdown-item" href="http://localhost:3000/article2">Article 2</a></li>
+                        <li><a class="dropdown-item" href="http://localhost:3000/article3">Article 3</a></li>
+                        <li><a class="dropdown-item" href="http://localhost:3000/article4">Article 4</a></li>
+                        <li><a class="dropdown-item" href="http://localhost:3000/article5">Article 5</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section text-center" data-aos="fade-up">
+    <video autoplay muted loop id="bg-video">
+        <source src="images/bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <h1>Welcome to My Portfolio</h1>
+    <p>A showcase of my projects and skills</p>
+    <div class="scroll-indicator">&#x2193; Scroll Down &#x2193;</div>
+</section>
+
+<!-- Portfolio Sections -->
+<section class="container text-section next-section" data-aos="fade-right">
+    <h2>Featured Projects</h2>
+    <p>Explore some of my recent work, ranging from web development to embedded systems designs:</p>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <a href="PDFs/MICPROS_EQ1_PROJECT-1.pdf" class="card-link text-dark text-decoration-none">
+                <div class="card" data-aos="fade-up">
+                    <img src="PDFs/vaccuum.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Miniature Learning Vacuum Robots</h5>
+                        <p class="card-text">A cost-effective miniature learning vacuum robot utilizing PIC16F877A microcontroller and ultrasonic sensing.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4 mb-4">
+            <a href="PDFs/fish.pdf" class="card-link text-dark text-decoration-none">
+                <div class="card" data-aos="fade-up">
+                    <img src="PDFs/fish.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Robotic Fish for Oil Spill Detection</h5>
+                        <p class="card-text">A robotic fish to detect oil spills using PIC16F877A microcontrollers and GPS for location communication.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4 mb-4">
+            <a href="PDFs/LBYCPD3_PROJ.pdf" class="card-link text-dark text-decoration-none">
+                <div class="card" data-aos="fade-up">
+                    <img src="PDFs/risc.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Enhancing RISC and MSAP Architectures</h5>
+                        <p class="card-text">Improving performance and usability of MSAP architecture by interfacing I/O ports.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4 mb-4">
+            <a href="pdfs/csyark.pdf" class="card-link text-dark text-decoration-none">
+                <div class="card" data-aos="fade-up">
+                    <img src="pdfs/csysark.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">MIPS Microprocessor with Fast Adder ALU</h5>
+                        <p class="card-text">Implementing MIPS microprocessor architecture enhanced with a fast adder ALU circuit.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4 mb-4">
+            <a href="pdfs/opesys.pdf" class="card-link text-dark text-decoration-none">
+                <div class="card" data-aos="fade-up">
+                    <img src="pdfs/iosand.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Android vs iOS: Security Evaluation</h5>
+                        <p class="card-text">A comprehensive evaluation of security vulnerabilities between Android and iOS.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section class="container text-section mt-5" data-aos="fade-left">
+    <h2>Technical Skills</h2>
+    <p>Here are some of the technical skills I bring to the table:</p>
+    <div class="row">
+        <div class="col-md-4 skill-item" data-aos="fade-up">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML Logo" style="width: 50px; height: 50px;">
+            <div>
+                <h5>HTML, CSS, JavaScript, Bootstrap</h5>
+                <p>Over 5 years of experience creating responsive and interactive web pages, with a deep understanding of front-end development and UI/UX principles.</p>
+            </div>
+        </div>
+        <div class="col-md-4 skill-item" data-aos="fade-up">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Logo" style="width: 50px; height: 50px;">
+            <div>
+                <h5>React, Angular, Vue.js</h5>
+                <p>Specialized in developing dynamic single-page applications (SPAs) with experience in state management and component-based architecture.</p>
+            </div>
+        </div>
+        <div class="col-md-4 skill-item" data-aos="fade-up">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo" style="width: 50px; height: 50px;">
+            <div>
+                <h5>Node.js, Express.js, MongoDB</h5>
+                <p>Extensive back-end development experience, including building RESTful APIs and managing NoSQL databases for scalable web applications.</p>
+            </div>
+        </div>
+        <div class="col-md-4 skill-item" data-aos="fade-up">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Adobe_Photoshop_CC_icon.svg/1024px-Adobe_Photoshop_CC_icon.svg.png" alt="Photoshop Logo" style="width: 50px; height: 50px;">
+            <div>
+                <h5>Adobe Photoshop, Illustrator</h5>
+                <p>Proficient in graphic design and digital art, with a portfolio of creative branding and design projects for various clients.</p>
+            </div>
+        </div>
+        <div class="col-md-4 skill-item" data-aos="fade-up">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" style="width: 50px; height: 50px;">
+            <div>
+                <h5>Python, Java, C++</h5>
+                <p>Versatile programming skills with a strong foundation in software development, algorithms, and data structures, used in various projects and competitions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="text-center bg-dark text-light fixed-footer">
+    <p>&copy; 2024 jujuArtz. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juju's 3D Art Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- Navigation (Bootstrap Navbar) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark top-right-nav">
+    <div class="container-fluid position-relative">
+        <a class="navbar-brand" href="#">Juju's Consortium of Stuff</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="photoalbum.html">Photo Album</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="portfolio.html">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="protectedBase.html">Login Admin</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Articles
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="http://localhost:3000/article1">Article 1</a></li>
+                        <li><a class="dropdown-item" href="http://localhost:3000/article2">Article 2</a></li>
+                        <li><a class="dropdown-item" href="http://localhost:3000/article3">Article 3</a></li>
+                        <li><a class="dropdown-item" href="http://localhost:3000/article4">Article 4</a></li>
+                        <li><a class="dropdown-item" href="http://localhost:3000/article5">Article 5</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Main Content -->
+<div class="container video-section">
+    <h2>My 3D Art Projects</h2>
+    <div class="row">
+        <div class="col-md-6 video-container">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/KE16sVII_Vs" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="video-title">Train Animation - E235 Yamanote Line & E233 Keihin-Tohoku Line</p>
+        </div>
+        <div class="col-md-6 video-container">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/nUcpPTlJhYc" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="video-title">E235-1000 Japanese Train 3D Model Animated アニメーション化された</p>
+        </div>
+        <div class="col-md-6 video-container">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/N2P9x-4dBj0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="video-title"> E235 Yamanote Line Interior Animation ft. nico yazawa </p>
+        </div>
+        <div class="col-md-6 video-container">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/BhnQngO5Wbs" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="video-title"> E235 Yamanote Line - Recreated in Blender </p>
+        </div>
+        <div class="col-md-6 video-container">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/z1w3YCYvY7E" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="video-title"> Hikari Dance MV - Specialist </p>
+        </div>
+    </div>
+</div>
+
+<!-- Background Video -->
+<video autoplay muted loop id="bg-video">
+    <source src="images/bg.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<!-- Footer -->
+<footer class="text-center bg-dark text-light fixed-footer">
+    <p>&copy; 2024 jujuArtz. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
