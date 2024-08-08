@@ -10,7 +10,7 @@ REM Pause to allow Python server to start
 timeout /t 2 /nobreak >nul
 
 REM Open the index.html file via the Python server's localhost URL
-start http://localhost:8000/index.html
+start http://localhost:8000
 
 REM Navigate to the React directory
 cd article5

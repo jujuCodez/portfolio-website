@@ -1,0 +1,29 @@
+{
+    "barChartData": [
+        ["City", "Average Price (JPY Millions)"],
+        ["Tokyo", 50],
+        ["Osaka", 35],
+        ["Nagoya", 30],
+        ["Kyoto", 28],
+        ["Fukuoka", 25]
+    ],
+    "pieChartData": [
+        ["Company", "Market Share"],
+        ["Mitsui Fudosan", 45],
+        ["Sumitomo Realty", 25],
+        ["Tokyo Tatemono", 15],
+        ["Mori Building", 10],
+        ["Other", 5]
+    ],
+    "lineChartData": [
+        ["Year", "Average Price (JPY Millions)"],
+        ["2015", 45],
+        ["2016", 47],
+        ["2017", 48],
+        ["2018", 50],
+        ["2019", 52],
+        ["2020", 53],
+        ["2021", 55],
+        ["2022", 58]
+    ]
+}

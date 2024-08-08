@@ -151,7 +151,7 @@ function showContent(item) {
                         <div><img src="images/photoalbum/1.jpg"></div>
                         <div><img src="images/photoalbum/2.jpg"></div>
                         <div><img src="images/photoalbum/3.jpg"></div>
-                        <div><img src="images/photoalbum/4.jpg"></div>
+                        <div><img src="images/photoalbum/4.jpg"></div>1
                         <div><img src="images/photoalbum/5.jpg"></div>
                         <div><img src="images/photoalbum/6.jpg"></div>
                         <div><img src="images/photoalbum/7.jpg"></div>
@@ -171,7 +171,7 @@ function showContent(item) {
                         <div><img src="images/photoalbum/9.jpg"></div>
                         <div><img src="images/photoalbum/10.jpg"></div>`;
             break;
-        case 'art':
+        case 'jujuartz':
             albumContent = `
                 <div class="album-content">
                     <h2>juju's Artworks</h2>
@@ -206,7 +206,7 @@ function showContent(item) {
             albumContent = `
                 <div class="album-content">
                     <h2>Welcome to the Photo Album</h2>
-                    <p>Select an album from the navigation to view the photos.</p>
+                    <p>Select an album from the navigation on the top left to view the photos.</p>
                 </div>`;
     }
 

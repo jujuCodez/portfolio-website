@@ -1,0 +1,29 @@
+{
+    "barChartData": [
+        ["City", "Average Price (PHP Millions)"],
+        ["Manila", 15],
+        ["Cebu", 12],
+        ["Davao", 10],
+        ["Makati", 20],
+        ["Taguig", 18]
+    ],
+    "pieChartData": [
+        ["Company", "Market Share"],
+        ["Ayala Land", 40],
+        ["SM Prime", 30],
+        ["Megaworld", 20],
+        ["Filinvest", 5],
+        ["Other", 5]
+    ],
+    "lineChartData": [
+        ["Year", "Average Price (PHP Millions)"],
+        ["2015", 10],
+        ["2016", 12],
+        ["2017", 14],
+        ["2018", 16],
+        ["2019", 18],
+        ["2020", 19],
+        ["2021", 20],
+        ["2022", 22]
+    ]
+}
