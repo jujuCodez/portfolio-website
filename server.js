@@ -98,7 +98,9 @@ app.post('/signup', (req, res) => {
     });
 });
 
-// Multer setup for job order/engagement form uploads
+
+
+// Multer setup for file uploads
 const pdfStorage = multer.diskStorage({
     destination: function (req, file, cb) {
         const uploadDir = path.join(__dirname, 'uploads', 'pdfs');
@@ -121,39 +123,92 @@ app.post('/upload-quotation', (req, res) => {
             return res.status(400).send('Error uploading PDF file');
         }
 
-        const { clientName, projectDescription, budget, deadline } = req.body;
-        const pdfPath = req.file ? `uploads/pdfs/${req.file.filename}` : '';
+        try {
+            // Extract form data from the request body
+            const clientName = req.body.clientName;
+            const projectDescription = req.body.projectDescription;
+            const budget = req.body.budget;
+            const deadline = req.body.deadline;
+            const pdfPath = req.file ? `uploads/pdfs/${req.file.filename}` : '';
 
-        const newJob = {
-            clientName,
-            projectDescription,
-            budget,
-            deadline,
-            pdfPath
-        };
+            // Create a new job object with form data and PDF path
+            const newJob = {
+                clientName,
+                projectDescription,
+                budget,
+                deadline,
+                pdfPath
+            };
 
-        const jobsFilePath = path.join(__dirname, 'data', 'client_jobs.json');
-        fs.readFile(jobsFilePath, 'utf8', (err, data) => {
-            let jobs = [];
-            if (!err) {
-                jobs = JSON.parse(data);
-            }
+            // Define the path to the JSON file where job data is stored
+            const jobsFilePath = path.join(__dirname, 'data', 'client_jobs.json');
 
-            jobs.push(newJob);
-
-            fs.writeFile(jobsFilePath, JSON.stringify(jobs, null, 2), (err) => {
-                if (err) {
-                    return res.status(500).send('Error saving job data');
+            // Read the existing jobs data from the JSON file
+            fs.readFile(jobsFilePath, 'utf8', (err, data) => {
+                let jobs = [];
+                if (!err && data) {
+                    jobs = JSON.parse(data);  // Parse the existing JSON data
                 }
 
-                res.send(`
-                    <script>
-                        alert('Job Order Submitted Successfully!');
-                        window.location.href = '/job.html';
-                    </script>
-                `);
+                jobs.push(newJob);  // Add the new job to the array of jobs
+
+                // Write the updated jobs array back to the JSON file
+                fs.writeFile(jobsFilePath, JSON.stringify(jobs, null, 2), (err) => {
+                    if (err) {
+                        return res.status(500).send('Error saving job data');
+                    }
+
+                    // Send a success response to the client
+                    res.send(`
+                        <script>
+                            alert('Job Order Submitted Successfully!');
+                            window.location.href = '/job.html';
+                        </script>
+                    `);
+                });
             });
-        });
+        } catch (error) {
+            res.status(500).send('Error processing job order form');
+        }
+    });
+});
+
+
+
+// Multer setup for HTML file uploads
+const htmlStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const uploadDir = path.join(__dirname, 'uploads', 'html');
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+        }
+        cb(null, uploadDir); // Save HTML files in this directory
+    },
+    filename: function (req, file, cb) {
+        cb(null, 'uploaded.html'); // Save file with a fixed name
+    }
+});
+
+const htmlUpload = multer({ storage: htmlStorage }).single('htmlFile');
+
+// Route to handle HTML file upload
+app.post('/upload-html', (req, res) => {
+    htmlUpload(req, res, function (err) {
+        if (err) {
+            return res.status(400).send('Error uploading HTML file');
+        }
+        res.redirect('/article4.html');
+    });
+});
+
+// Route to serve the uploaded HTML content
+app.get('/get-html', (req, res) => {
+    const filePath = path.join(__dirname, 'uploads', 'html', 'uploaded.html');
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(404).send('No HTML file detected');
+        }
+        res.send(data);
     });
 });
 
@@ -161,6 +216,7 @@ app.post('/upload-quotation', (req, res) => {
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
+
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}/`);

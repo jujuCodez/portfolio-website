@@ -21,8 +21,6 @@ start /min cmd /c "npm run start"
 REM Wait for a few seconds to ensure the React server has started
 timeout /t 5 /nobreak >nul
 
-REM Close the browser tab by finding the process running on localhost:3000
-taskkill /f /fi "WINDOWTITLE eq localhost:3000*"
 
 REM Navigate to the Node.js server directory (assuming it's in the root directory)
 cd ..

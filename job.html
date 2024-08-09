@@ -86,22 +86,23 @@
     <!-- Job Order/Engagement Form -->
     <div class="form-section">
         <h2>Job Order/Engagement Form</h2>
-        <form id="jobOrderForm">
+        <!-- Ensure form has action and method attributes -->
+        <form id="jobOrderForm" action="/upload-quotation" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="clientName" class="form-label">Client Name</label>
-                <input type="text" class="form-control" id="clientName" required>
+                <input type="text" class="form-control" id="clientName" name="clientName" required>
             </div>
             <div class="mb-3">
                 <label for="projectDescription" class="form-label">Project Description</label>
-                <textarea class="form-control" id="projectDescription" rows="3" required></textarea>
+                <textarea class="form-control" id="projectDescription" name="projectDescription" rows="3" required></textarea>
             </div>
             <div class="mb-3">
                 <label for="budget" class="form-label">Budget (PHP)</label>
-                <input type="number" class="form-control" id="budget" required>
+                <input type="number" class="form-control" id="budget" name="budget" required>
             </div>
             <div class="mb-3">
                 <label for="deadline" class="form-label">Deadline</label>
-                <input type="date" class="form-control" id="deadline" required>
+                <input type="date" class="form-control" id="deadline" name="deadline" required>
             </div>
             <div class="mb-3">
                 <label for="quotationFile" class="form-label">For more specific details, please upload a PDF</label>
@@ -113,7 +114,7 @@
 
     <!-- Summary Section -->
     <div class="summary-section" id="summarySection" style="display:none;">
-        <h2>Summary</h2>
+        <h2>Order submitted! Here's a summary:</h2>
         <p id="summaryContent"></p>
     </div>
 </div>

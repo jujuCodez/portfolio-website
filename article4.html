@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/favicon.png" />
     <style>
-        
-
         /* Styles for content area */
         #content-area {
             margin-top: 200px; /* Adjust this value to move content down */
@@ -24,42 +22,66 @@
             margin-right: auto;
         }
 
-        /* Custom styles for showing HTML content */
+        /* Ensure consistent text size */
+        .navbar-nav .nav-link {
+            font-size: 16px; /* Set a fixed font size */
+        }
+
+        #content-area h2 {
+            font-size: 24px; /* Fixed size for heading */
+            margin-bottom: 20px; /* Add margin for spacing */
+        }
+
+        #content-area form input[type="file"] {
+            font-size: 16px; /* Set a fixed font size for input fields */
+        }
+
+        #content-area form button {
+            font-size: 16px; /* Set a fixed font size for buttons */
+        }
+
+        /* iFrame to contain uploaded HTML */
         .html-contents {
             background-color: white;
-            padding: 15px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             overflow-wrap: break-word;
             max-width: 100%;
             height: 700px;
-            overflow-y: auto; /* Allows scrolling within the div if content is too large */
+            overflow: hidden; /* Hide any overflow */
         }
-        /* Ensure consistent text size */
-.navbar-nav .nav-link {
-    font-size: 16px; /* Set a fixed font size */
-}
 
-#content-area h2 {
-    font-size: 24px; /* Fixed size for heading */
-    margin-bottom: 20px; /* Add margin for spacing */
-}
+        .html-contents iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Remove iframe border */
+            border-radius: 10px;
+        }
 
-#content-area form input[type="file"] {
-    font-size: 16px; /* Set a fixed font size for input fields */
-}
-
-#content-area form button {
-    font-size: 16px; /* Set a fixed font size for buttons */
-}
-
-/* Additional style adjustments if needed */
-.html-contents {
-    font-size: 16px; /* Set a consistent font size for HTML content */
-}
-
+        /* Calculator Modal Styles */
+        .modal-dialog {
+            width: 350px; /* Adjust width to fit more buttons */
+        }
+        .calculator-button {
+            width: 50px; /* Equal width for all buttons */
+            height: 50px; /* Equal height for all buttons */
+            font-size: 20px; /* Larger font size for readability */
+            margin: 2px; /* Reduced margin */
+        }
+        #result {
+            font-size: 24px; /* Larger font size for the display */
+            text-align: right; /* Right align text in the display */
+            margin-bottom: 10px; /* Smaller bottom margin */
+        }
+        .button-row {
+            display: flex; /* Flex container for buttons */
+            justify-content: center; /* Centering buttons */
+            flex-wrap: wrap; /* Allow wrapping of buttons */
+        }
+        .modal-title {
+            color: black; /* Make the Calculator title black */
+        }
     </style>
-    <script src="js/article4.js"></script>
 </head>
 <body>
     <!-- Rounded Rectangle Image -->
@@ -115,26 +137,233 @@
         Your browser does not support the video tag.
     </video>
 
-    <!-- Navigation Bar with Tabs -->
-    <nav class="navbar navbar-expand-lg navbar-dark gradient-navbar middle-navbar">
-        <div class="container-fluid">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:showTab('upload')">Upload HTML</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:showTab('view')">Show HTML</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<!-- Navigation Bar with Tabs -->
+<nav class="navbar navbar-expand-lg navbar-dark gradient-navbar middle-navbar">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:showTab('upload')">Upload HTML</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:showTab('view')">Show HTML</a>
+            </li>
+            <!-- New Nav Item for Calculator -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#calculatorModal">Calculator</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div style="position: absolute; top: 140px; left: 20%; color: white; padding: 10px; border-radius: 5px;">
+    <h2>HTML Displayer</h2>
+</div>
 
     <!-- Content Area -->
     <div id="content-area">
-        <!-- Default Content or Upload Form will be displayed here -->
+        <h2>Please upload an HTML file</h2>
     </div>
+
+    <!-- Calculator Modal -->
+<div class="modal fade" id="calculatorModal" tabindex="-1" aria-labelledby="calculatorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="calculatorModalLabel" style="color: black;">Sci - Calculator</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="result" class="form-control" placeholder="0" readonly>
+                <div class="button-row">
+                    <button class="btn btn-light calculator-button" onclick="appendNumber('7')">7</button>
+                    <button class="btn btn-light calculator-button" onclick="appendNumber('8')">8</button>
+                    <button class="btn btn-light calculator-button" onclick="appendNumber('9')">9</button>
+                    <button class="btn btn-secondary calculator-button" onclick="setOperator('/')">/</button>
+                </div>
+                <div class="button-row">
+                    <button class="btn btn-light calculator-button" onclick="appendNumber('4')">4</button>
+                    <button class="btn btn-light calculator-button" onclick="appendNumber('5')">5</button>
+                    <button class="btn btn-light calculator-button" onclick="appendNumber('6')">6</button>
+                    <button class="btn btn-secondary calculator-button" onclick="setOperator('*')">*</button>
+                </div>
+                <div class="button-row">
+                    <button class="btn btn-light calculator-button" onclick="appendNumber('1')">1</button>
+                    <button class="btn btn-light calculator-button" onclick="appendNumber('2')">2</button>
+                    <button class="btn btn-light calculator-button" onclick="appendNumber('3')">3</button>
+                    <button class="btn btn-secondary calculator-button" onclick="setOperator('-')">-</button>
+                </div>
+                <div class="button-row">
+                    <button class="btn btn-light calculator-button" onclick="appendNumber('0')">0</button>
+                    <button class="btn btn-light calculator-button" onclick="appendDecimal()">.</button>
+                    <button class="btn btn-danger calculator-button" onclick="clearInput()">C</button>
+                    <button class="btn btn-secondary calculator-button" onclick="setOperator('+')">+</button>
+                </div>
+                <div class="button-row">
+                    <button class="btn btn-secondary calculator-button" onclick="setOperator('**')">^</button>
+                    <button class="btn btn-secondary calculator-button" onclick="calculateSqrt()">√</button>
+                    <button class="btn btn-secondary calculator-button" onclick="calculateSin()">sin</button>
+                    <button class="btn btn-secondary calculator-button" onclick="calculateCos()">cos</button>
+                </div>
+                <div class="button-row">
+                    <button class="btn btn-secondary calculator-button" onclick="calculateTan()">tan</button>
+                    <button class="btn btn-secondary calculator-button" onclick="calculateLog()">log</button>
+                    <button class="btn btn-success calculator-button" onclick="calculateResult()">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showTab(tabName) {
+            const contentArea = document.getElementById('content-area');
+            
+            if (tabName === 'upload') {
+                contentArea.innerHTML = `
+                    <h2>Upload HTML File</h2>
+                    <form action="/upload-html" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="htmlFile" accept=".html" required>
+                        <button type="submit" class="btn btn-primary mt-3">Upload</button>
+                    </form>
+                `;
+            } else if (tabName === 'view') {
+                fetch('/get-html')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('No HTML file detected');
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        contentArea.innerHTML = `
+                            <div class="html-contents">
+                                <iframe src="data:text/html;charset=utf-8,${encodeURIComponent(data)}"></iframe>
+                            </div>`;
+                    })
+                    .catch(error => {
+                        alert('No HTML file detected. Please upload an HTML file first.');
+                        console.error('Error loading HTML:', error);
+                    });
+            }
+        }
+
+        // Calculator functions
+        function appendNumber(number) {
+            document.getElementById("result").value += number;
+        }
+
+        function setOperator(op) {
+            document.getElementById("result").value += ' ' + op + ' ';
+        }
+
+        function appendDecimal() {
+            document.getElementById("result").value += '.';
+        }
+
+        function clearInput() {
+            document.getElementById("result").value = '';
+        }
+
+        function calculateResult() {
+            let expression = document.getElementById("result").value;
+            try {
+                let result = eval(expression);
+                document.getElementById("result").value = result;
+            } catch (error) {
+                document.getElementById("result").value = 'Error';
+            }
+        }
+
+        function calculateSqrt() {
+            let expression = document.getElementById("result").value;
+            try {
+                let result = Math.sqrt(eval(expression));
+                document.getElementById("result").value = result;
+            } catch (error) {
+                document.getElementById("result").value = 'Error';
+            }
+        }
+
+        function calculateSin() {
+            let expression = document.getElementById("result").value;
+            try {
+                let result = Math.sin(eval(expression));
+                document.getElementById("result").value = result;
+            } catch (error) {
+                document.getElementById("result").value = 'Error';
+            }
+        }
+
+        function calculateCos() {
+            let expression = document.getElementById("result").value;
+            try {
+                let result = Math.cos(eval(expression));
+                document.getElementById("result").value = result;
+            } catch (error) {
+                document.getElementById("result").value = 'Error';
+            }
+        }
+
+        function calculateTan() {
+            let expression = document.getElementById("result").value;
+            try {
+                let result = Math.tan(eval(expression));
+                document.getElementById("result").value = result;
+            } catch (error) {
+                document.getElementById("result").value = 'Error';
+            }
+        }
+
+        function calculateLog() {
+            let expression = document.getElementById("result").value;
+            try {
+                let result = Math.log10(eval(expression));
+                document.getElementById("result").value = result;
+            } catch (error) {
+                document.getElementById("result").value = 'Error';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var calculatorModal = document.getElementById('calculatorModal');
+            calculatorModal.addEventListener('shown.bs.modal', makeModalDraggable);
+
+            function makeModalDraggable() {
+                var dialog = document.querySelector('#calculatorModal .modal-dialog');
+                var header = document.querySelector('#calculatorModal .modal-header');
+                var isDragging = false;
+                var originalMousePos = { x: 0, y: 0 };
+
+                header.addEventListener('mousedown', function(e) {
+                    isDragging = true;
+                    originalMousePos.x = e.clientX;
+                    originalMousePos.y = e.clientY;
+                });
+
+                document.addEventListener('mousemove', function(e) {
+                    if (isDragging) {
+                        var currentMousePos = { x: e.clientX, y: e.clientY };
+                        var dx = currentMousePos.x - originalMousePos.x;
+                        var dy = currentMousePos.y - originalMousePos.y;
+
+                        // Manually calculate and set the top and left styles
+                        var currentTop = parseInt(dialog.style.top || window.getComputedStyle(dialog).top);
+                        var currentLeft = parseInt(dialog.style.left || window.getComputedStyle(dialog).left);
+
+                        dialog.style.top = (currentTop + dy) + 'px';
+                        dialog.style.left = (currentLeft + dx) + 'px';
+
+                        originalMousePos = currentMousePos;
+                    }
+                });
+
+                document.addEventListener('mouseup', function() {
+                    isDragging = false;
+                });
+            }
+        });
+    </script>
 </body>
 </html>
