@@ -1,38 +1,39 @@
-.App {
-  text-align: center;
+/* Ensure the main container takes up the full height */
+html, body, #root, #root > div {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  z-index: -1;
+  filter: brightness(50%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Ensure your content is positioned above the video */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+header {
+  padding: 20px;
+  text-align: center;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+main {
+  padding: 20px;
 }
+
+h1 {
+  font-size: 2em;
+}
+
+/* Additional styles specific to Article5 can be added here */

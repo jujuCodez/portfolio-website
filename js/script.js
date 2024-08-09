@@ -151,7 +151,7 @@ function showContent(item) {
                         <div><img src="images/photoalbum/1.jpg"></div>
                         <div><img src="images/photoalbum/2.jpg"></div>
                         <div><img src="images/photoalbum/3.jpg"></div>
-                        <div><img src="images/photoalbum/4.jpg"></div>1
+                        <div><img src="images/photoalbum/4.jpg"></div>
                         <div><img src="images/photoalbum/5.jpg"></div>
                         <div><img src="images/photoalbum/6.jpg"></div>
                         <div><img src="images/photoalbum/7.jpg"></div>
@@ -214,4 +214,156 @@ function showContent(item) {
 
     // Initialize the slider again after content is changed
     initializeSliders();
+    function toggleCalculator() {
+        var $calculator = $('#mydiv');
+        // Toggle the display based on its current state
+        $calculator.toggle();  // This method automatically toggles visibility
+    
+        if ($calculator.css('display') === 'block') {
+            dragElement($calculator[0]); // Passing the DOM element to the dragElement function
+        }
+    }
+    
+    function toggleTextSort() {
+        var $textSort = $('#textSorter');
+        // Toggle the display based on its current state
+        $textSort.toggle();  // This method automatically toggles visibility
+    
+        if ($textSort.css('display') === 'block') {
+            dragElement($textSort[0]); // Passing the DOM element to the dragElement function
+        }
+    }
+    
+    
+    $(document).ready(function() {
+        // Text sorting
+        $('#sort-button').click(function() {
+            var text = $('#text-input').val().trim();
+            if (text === '') {
+                alert('Please paste some text into the textarea.');
+                return;
+            }
+            var wordsArray = text.split(/\s+/);
+            wordsArray.sort((a, b) => a.localeCompare(b));
+            $('#text-input').val(wordsArray.join(' '));
+        });
+    
+        // Calculator Operations
+        $('#add').click(function() { performOperation('+'); });
+        $('#subtract').click(function() { performOperation('-'); });
+        $('#multiply').click(function() { performOperation('*'); });
+        $('#divide').click(function() { performOperation('/'); });
+    
+        function performOperation(operator) {
+            var num1 = parseFloat($('#operand1').val());
+            var num2 = parseFloat($('#operand2').val());
+            if (isNaN(num1) || isNaN(num2)) {
+                alert('Please enter valid numbers in both fields.');
+                return;
+            }
+    
+            var calculation;
+            switch (operator) {
+                case '+':
+                    calculation = num1 + num2;
+                    break;
+                case '-':
+                    calculation = num1 - num2;
+                    break;
+                case '*':
+                    calculation = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 === 0) {
+                        alert('Cannot divide by zero.');
+                        return;
+                    }
+                    calculation = num1 / num2;
+                    break;
+                default:
+                    alert('Invalid operator');
+                    return;
+            }
+    
+            $('#result').val(calculation);
+        }
+    
+        // Additional functions
+        function appendNumber(number) {
+            $("#operand1").val($("#operand1").val() + number);
+        }
+    
+        function setOperator(op) {
+            $("#operand2").val($("#operand2").val() + op);
+        }
+    
+        function clearInput() {
+            $("#operand1, #operand2, #result").val('');
+        }
+    
+        // Expose functions to the global scope if needed
+        window.appendNumber = appendNumber;
+        window.setOperator = setOperator;
+        window.clearInput = clearInput;
+    });
+    
+    function dragElement(element) {
+        const el = $(element);
+        const header = el.children(':first');
+        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    
+        header.on('mousedown touchstart', function(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos3 = e.clientX || e.touches[0].clientX;
+          pos4 = e.clientY || e.touches[0].clientY;
+          $(document).on('mousemove touchmove', elementDrag);
+          $(document).on('mouseup touchend', closeDragElement);
+        });
+    
+        function elementDrag(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos1 = pos3 - (e.clientX || e.touches[0].clientX);
+          pos2 = pos4 - (e.clientY || e.touches[0].clientY);
+          pos3 = e.clientX || e.touches[0].clientX;
+          pos4 = e.clientY || e.touches[0].clientY;
+          el.css({
+            top: (el.offset().top - pos2) + "px",
+            left: (el.offset().left - pos1) + "px"
+          });
+        }
+    
+        function closeDragElement() {
+          $(document).off('mousemove touchmove', elementDrag);
+          $(document).off('mouseup touchend', closeDragElement);
+        }
+      }
+      document.getElementById('jobOrderForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        const formData = new FormData(this);
+        
+        fetch('/job-order', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Display the summary or redirect to a summary page
+            document.getElementById('jobOrderModal .modal-body').innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    document.getElementById('jobOrderBtn').addEventListener('click', function() {
+        var myModal = new bootstrap.Modal(document.getElementById('jobOrderModal'), {
+            keyboard: false
+        });
+        myModal.show();
+    });
+    
+    
 }
+
+
+

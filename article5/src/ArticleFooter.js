@@ -1,11 +1,12 @@
 import React from 'react';
+import './ArticleFooter.css'; // Ensure this file exists for your footer styles
 
-const ArticleFooter = () => {
-  return (
-    <footer>
-      <p>© 2023 Juju's Consortium of Stuff. All rights reserved.</p>
-    </footer>
-  );
-};
+function ArticleFooter() {
+    return (
+        <footer className="fixed-footer text-center">
+            <p>&copy; 2024 jujuArtz. All rights reserved.</p>
+        </footer>
+    );
+}
 
 export default ArticleFooter;

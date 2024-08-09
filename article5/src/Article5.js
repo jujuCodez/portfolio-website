@@ -1,18 +1,19 @@
 import React from 'react';
-import Navbar from './components/Navbar'; // Ensure this path matches your folder structure
+import Navbar from './components/Navbar';
 import ArticleContent from './ArticleContent';
 import ArticleFooter from './ArticleFooter';
 import Component1 from './components/Component1';
 import Component2 from './components/Component2';
+import './Article5.css'; // Import the CSS file
 
 function Article5() {
     return (
         <div>
             <Navbar />
             <header>
-                <h1>Article 5: Implemented with React JS</h1>
+                <h1>A Website implemented with ReactJS</h1>
             </header>
-            <main>
+            <main className="content-layout">
                 <ArticleContent />
                 <Component1 />
                 <Component2 />

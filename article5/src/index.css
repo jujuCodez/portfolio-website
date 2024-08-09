@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto; /* Ensure vertical scrollbar is always available */
+  overflow-x: hidden; /* Prevent horizontal scrollbar if not needed */
+}
+
+#root {
+  height: 100%;
+  overflow-y: auto; /* Allow scrolling within the root element */
+}
+
+/* Reset overflow settings if needed */
+.fixed-footer {
+  overflow-y: auto;
+  overflow-x: hidden;
+}

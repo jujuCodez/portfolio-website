@@ -31,6 +31,18 @@
             color: red;
             display: none;
         }
+        #bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index: -1;
+    filter: brightness(40%) blur(4px);
+    transform: scale(1.1); /* Adjust this value to zoom in or out */
+    object-fit: cover; /* Ensure the video covers the entire background */
+}
+
     </style>
 </head>
 <body>

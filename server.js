@@ -6,10 +6,14 @@ const path = require('path');
 const app = express();
 const port = 8010;
 
-app.use(express.static(path.join(__dirname)));  // Serve static files
-app.use(bodyParser.urlencoded({ extended: true }));
+// Serve static files from the current directory
+app.use(express.static(path.join(__dirname)));
 
-// Multer setup for file uploads
+// Use body-parser to parse URL-encoded data
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); // For parsing JSON data
+
+// Multer setup for user photo uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'images/users'); // Save user photos in this directory
@@ -45,7 +49,7 @@ app.post('/signup', (req, res) => {
         }
 
         const { username, email, password } = req.body;
-        let photo = req.file ? `${req.file.filename}` : 'placeholder.png'; // Include full path
+        let photo = req.file ? `${req.file.filename}` : 'placeholder.png';
 
         const newUser = {
             username: username,
@@ -83,11 +87,69 @@ app.post('/signup', (req, res) => {
                     return res.status(500).send('Error saving user data');
                 }
 
-                // Send a script that alerts the user and redirects to index.html
                 res.send(`
                     <script>
                         alert('New User Created!');
                         window.location.href = '/';
+                    </script>
+                `);
+            });
+        });
+    });
+});
+
+// Multer setup for job order/engagement form uploads
+const pdfStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const uploadDir = path.join(__dirname, 'uploads', 'pdfs');
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+        }
+        cb(null, uploadDir); // Save PDFs in this directory
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname)); // Save file with a unique name
+    }
+});
+
+const pdfUpload = multer({ storage: pdfStorage }).single('quotationFile');
+
+// Handle job order form submission and save to JSON
+app.post('/upload-quotation', (req, res) => {
+    pdfUpload(req, res, function (err) {
+        if (err) {
+            return res.status(400).send('Error uploading PDF file');
+        }
+
+        const { clientName, projectDescription, budget, deadline } = req.body;
+        const pdfPath = req.file ? `uploads/pdfs/${req.file.filename}` : '';
+
+        const newJob = {
+            clientName,
+            projectDescription,
+            budget,
+            deadline,
+            pdfPath
+        };
+
+        const jobsFilePath = path.join(__dirname, 'data', 'client_jobs.json');
+        fs.readFile(jobsFilePath, 'utf8', (err, data) => {
+            let jobs = [];
+            if (!err) {
+                jobs = JSON.parse(data);
+            }
+
+            jobs.push(newJob);
+
+            fs.writeFile(jobsFilePath, JSON.stringify(jobs, null, 2), (err) => {
+                if (err) {
+                    return res.status(500).send('Error saving job data');
+                }
+
+                res.send(`
+                    <script>
+                        alert('Job Order Submitted Successfully!');
+                        window.location.href = '/job.html';
                     </script>
                 `);
             });

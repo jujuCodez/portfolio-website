@@ -1,0 +1,28 @@
+:root {
+    --text-color: #e1e1e1;
+    --highlight-color: rgba(255, 255, 255, 0.1); /* Highlight background color */
+    --accent-color: #ff748b; /* Accent color for cool text effects */
+}
+
+footer {
+    background-color: #222;
+    padding: 5px 0; /* Reduced padding to shift text upwards */
+    text-align: center;
+    border-top: 2px solid var(--accent-color); /* Add a border at the top */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+    color: var(--text-color); /* Ensure the text color is consistent */
+    overflow: hidden; /* Prevents any scrolling within the footer */
+}
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 40px; /* Set a fixed height for a thinner footer */
+    line-height: 30px; /* Reduced line height to align text higher */
+    font-size: 0.9rem;
+    text-transform: uppercase; /* Make the text uppercase for a sleek look */
+    letter-spacing: 1px; /* Add some spacing between letters */
+    overflow: hidden; /* Ensure no scrollbar appears */
+}

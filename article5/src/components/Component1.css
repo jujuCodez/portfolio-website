@@ -1,16 +1,21 @@
 .component1 {
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    background: linear-gradient(to bottom, #121212, #1c1c1c);
     border-radius: 10px;
     padding: 20px;
     color: #fff;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 20px;
+    width: 300px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
     animation: fadeIn 1s ease-in;
 }
 
 .btn {
-    background-color: #fff;
-    color: #ff7e5f;
+    background-color: #ff7e5f;
+    color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -20,8 +25,7 @@
 }
 
 .btn:hover {
-    background-color: #ff7e5f;
-    color: #fff;
+    background-color: #feb47b;
     transform: scale(1.05);
 }
 
@@ -29,6 +33,34 @@
     font-size: 1.5rem;
     margin-top: 10px;
     animation: popIn 0.5s ease-out;
+}
+
+.cookie {
+    position: absolute;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateY(0) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    animation: jumpOut 1s ease-in-out forwards;
+}
+
+@keyframes jumpOut {
+    0% {
+        transform: translateY(0) scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-150%) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-200%) scale(0);
+        opacity: 0;
+    }
 }
 
 @keyframes fadeIn {
@@ -50,4 +82,9 @@
         transform: scale(1);
     }
 }
-    
+.high-score {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #ff7e5f;
+    animation: popIn 0.5s ease-out;
+}

@@ -1,0 +1,57 @@
+.article-content {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background: #2c2c2c; /* Dark background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    animation: fadeInContent 0.5s ease-in;
+}
+
+.introduction, .react-benefits, .interactive-components {
+    margin-bottom: 20px;
+}
+
+.introduction h2 {
+    font-size: 2rem;
+    color: #e1e1e1; /* Light color for headings */
+    margin-bottom: 10px;
+}
+
+.introduction p {
+    font-size: 1.2rem;
+    color: #b3b3b3; /* Light color for text */
+}
+
+.react-benefits h3, .interactive-components h3 {
+    font-size: 1.5rem;
+    color: #e1e1e1; /* Light color for headings */
+    margin-bottom: 10px;
+}
+
+.react-benefits ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    color: #b3b3b3; /* Light color for list items */
+}
+
+.react-benefits ul li {
+    margin-bottom: 5px;
+}
+
+.interactive-components p {
+    font-size: 1.1rem;
+    color: #b3b3b3; /* Light color for text */
+    margin-bottom: 20px;
+}
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

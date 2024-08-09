@@ -74,11 +74,16 @@
     </style>
 </head>
 <body>
+<!-- Rounded Rectangle Image -->
+<div class="rounded-image-container">
+    <div class="rounded-image">
+        <img src="images/header.png" alt="Header Image">
+    </div>
+</div>
 
 <!-- Navigation (Bootstrap Navbar) -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark top-right-nav">
     <div class="container-fluid position-relative">
-        <a class="navbar-brand" href="#">Juju's Consortium of Stuff</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -96,20 +101,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="portfolio.html">Portfolio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="protectedBase.html">Login Admin</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Articles
                     </a>
                     <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="article1vidembedd.html">Article 1 - Videos</a></li>
-                        <li><a class="dropdown-item" href="http://localhost:3000/article2">Article 2</a></li>
-                        <li><a class="dropdown-item" href="http://localhost:3000/article3">Article 3</a></li>
-                        <li><a class="dropdown-item" href="http://localhost:3000/article4">Article 4</a></li>
-                        <li><a class="dropdown-item" href="http://localhost:3000/article5">Article 5</a></li>
+                        <li><a class="dropdown-item" href="protectedBase.html?type=japanese">Article 2 - Data of Japan Houses</a></li>
+                        <li><a class="dropdown-item" href="protectedBase.html?type=filipino">Article 3 - Data of Filipino Houses</a></li>
+                        <li><a class="dropdown-item" href="http://localhost:3000/article4">Article 4 - NodeJS</a></li>
+                        <li><a class="dropdown-item" href="http://localhost:3000/article5">Article 5 - ReactJS</a></li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Sign-up</a>
                 </li>
             </ul>
         </div>
@@ -190,40 +195,40 @@
     </div>
 </section>
 
-
+<!-- Technical Skills Section -->
 <section class="container text-section mt-5" data-aos="fade-left">
     <h2>Technical Skills</h2>
     <p>Here are some of the technical skills I bring to the table:</p>
     <div class="row">
-        <div class="col-md-4 skill-item" data-aos="fade-up">
+        <div class="col-md-4 skill-item" data-aos="fade-up" data-bs-toggle="tooltip" title="HTML, CSS, JavaScript, and Bootstrap are used to create responsive and interactive web pages. I've honed these skills over 5 years, specializing in front-end development and user experience design.">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML Logo" style="width: 50px; height: 50px;">
             <div>
                 <h5>HTML, CSS, JavaScript, Bootstrap</h5>
                 <p>Over 5 years of experience creating responsive and interactive web pages, with a deep understanding of front-end development and UI/UX principles.</p>
             </div>
         </div>
-        <div class="col-md-4 skill-item" data-aos="fade-up">
+        <div class="col-md-4 skill-item" data-aos="fade-up" data-bs-toggle="tooltip" title="React, Angular, and Vue.js are powerful JavaScript frameworks for building dynamic single-page applications (SPAs). My experience includes managing state, implementing components, and optimizing performance.">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Logo" style="width: 50px; height: 50px;">
             <div>
                 <h5>React, Angular, Vue.js</h5>
                 <p>Specialized in developing dynamic single-page applications (SPAs) with experience in state management and component-based architecture.</p>
             </div>
         </div>
-        <div class="col-md-4 skill-item" data-aos="fade-up">
+        <div class="col-md-4 skill-item" data-aos="fade-up" data-bs-toggle="tooltip" title="Node.js and Express.js enable server-side development, while MongoDB is a NoSQL database. My back-end development experience includes building RESTful APIs, managing data, and ensuring application scalability.">
             <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo" style="width: 50px; height: 50px;">
             <div>
                 <h5>Node.js, Express.js, MongoDB</h5>
                 <p>Extensive back-end development experience, including building RESTful APIs and managing NoSQL databases for scalable web applications.</p>
             </div>
         </div>
-        <div class="col-md-4 skill-item" data-aos="fade-up">
+        <div class="col-md-4 skill-item" data-aos="fade-up" data-bs-toggle="tooltip" title="Adobe Photoshop and Illustrator are essential tools for digital design and branding. I have developed a portfolio that showcases creative solutions for clients in various industries.">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Adobe_Photoshop_CC_icon.svg/1024px-Adobe_Photoshop_CC_icon.svg.png" alt="Photoshop Logo" style="width: 50px; height: 50px;">
             <div>
                 <h5>Adobe Photoshop, Illustrator</h5>
                 <p>Proficient in graphic design and digital art, with a portfolio of creative branding and design projects for various clients.</p>
             </div>
         </div>
-        <div class="col-md-4 skill-item" data-aos="fade-up">
+        <div class="col-md-4 skill-item" data-aos="fade-up" data-bs-toggle="tooltip" title="Python, Java, and C++ are versatile programming languages that I have used for software development, algorithm design, and competitive programming. My skills encompass a broad range of technical challenges.">
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" style="width: 50px; height: 50px;">
             <div>
                 <h5>Python, Java, C++</h5>
@@ -232,7 +237,10 @@
         </div>
     </div>
 </section>
-
+<!-- Button to Job Page -->
+<div class="text-center mt-4">
+    <a href="job.html" class="btn hire-me-btn">Interested? Hire me!</a>
+</div>
 
 <!-- Footer -->
 <footer class="text-center bg-dark text-light fixed-footer">
@@ -242,5 +250,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script src="js/script.js"></script>
+<script>
+    // Initialize Bootstrap tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 </body>
 </html>

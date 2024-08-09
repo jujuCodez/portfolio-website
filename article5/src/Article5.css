@@ -1,0 +1,50 @@
+/* Ensure the main container takes up the full height */
+html, body, #root, #root > div {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Ensure your content is positioned correctly */
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    color: white;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    transform: translate(0%, -50%);
+    padding: 20px;
+    color: white;
+}
+
+main {
+    padding: 20px;
+    flex: 1;
+}
+
+h1 {
+    font-size: 2em;
+    color: white;
+}
+.content-layout {
+    transform: translate(0%, 15%);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.article-content {
+    flex: 2; /* Takes up more space */
+    margin: 0;
+    max-width: none;
+}
+
+.component1, .component2 {
+    flex: 1; /* Takes up less space */
+}
