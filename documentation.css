@@ -1,0 +1,148 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 0 0 250px;
+    background: #343a40;
+    color: #ffffff;
+    padding: 20px;
+    border-right: 2px solid #495057;
+    border-radius: 10px 0 0 10px;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #ffc107;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #ffc107;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    color: #ffdd57;
+    text-decoration: underline;
+}
+
+/* Main Content Area */
+.content-area {
+    flex: 1;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Section Styling */
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    background: #f8f9fa;
+}
+
+section h1, section h2 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #343a40;
+    border-bottom: 2px solid #ff0707;
+    padding-bottom: 5px;
+}
+
+section p {
+    text-align: justify;
+    font-size: 16px;
+    color: #495057;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+table th, table td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+    color: #495057;
+}
+
+table th {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+table td {
+    background-color: #ffffff;
+}
+
+/* Signature Image Styling */
+.signature img {
+    max-width: 200px;
+    margin-top: 10px;
+}
+
+/* Navigation Link Styling */
+.nav-item {
+    list-style-type: none;
+    display: inline;
+    margin-right: 10px;
+}
+
+.nav-link {
+    cursor: pointer;
+    padding: 10px;
+    text-decoration: none;
+    color: #007bff;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.nav-link.current {
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
+}
